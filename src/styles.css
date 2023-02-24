@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+/* --------------- */
+/* ---Variables--- */
+/* --------------- */
+:root {
+  --sunglow: #ffc31d;
+  --raisin-black: #252931;
+  --muted-white: #fafafa;
+}
+
+/* -------------- */
+/* ---Globales--- */
+/* -------------- */
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+  background-color: var(--raisin-black);
+  color: var(--muted-white);
+}
+
+/* ----------------- */
+/* ---Componentes--- */
+/* ----------------- */
+
+.custom-button {
+  background-color: var(--sunglow);
+  color: var(--raisin-black);
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.custom-button svg {
+  display: inline-block;
+  vertical-align: -0.125em;
+  fill: currentcolor;
+}
+
+.custom-button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.custom-button:active {
+  filter: brightness(1.2);
+}
+
+/* ----------------- */
+
+.custom-icon-button {
+  font-size: 1.7rem;
+  border: none;
+  background: none;
+  color: var(--sunglow);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.custom-icon-button:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+.custom-icon-button:active {
+  filter: brightness(1.2);
+}
+
+/* ----------------- */
+
+.custom-icon-a {
+  font-size: 1.2rem;
+  border: none;
+  background: none;
+  color: var(--sunglow);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.custom-icon-a:hover {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* ----------------- */
+
+.custom-navl {
+  color: var(--muted-white);
+  font-weight: bold;
+}
+
+.custom-navl:hover {
+  color: var(--sunglow);
+  filter: brightness(1.1);
+}
+
+.custom-navl:active {
+  color: var(--sunglow);
+}
+
+/* ------------ */
+/* ---Clases--- */
+/* ------------ */
+
+.pantalla-principal {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--raisin-black);
+}
+
+/* FONDO PRINCIPAL */
+
+.pantalla-principal:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  background-color: var(--raisin-black);
+  background-image: url(assets/code-programming.jpg);
+  background-size: 100% auto;
+  background-position: center;
+  filter: blur(4px) brightness(0.4);
+}
+
+.hero {
+  position: relative;
+  z-index: 1;
+  flex: auto;
+}
