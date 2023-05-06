@@ -8,6 +8,7 @@ import { HeroComponent } from './componentes/hero/hero.component';
 import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     EncabezadoComponent,
     HeroComponent,
     AcercaDeComponent,
+    ProyectosComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

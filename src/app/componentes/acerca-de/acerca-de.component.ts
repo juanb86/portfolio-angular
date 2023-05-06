@@ -7,15 +7,13 @@ import { PortfolioService } from '../../servicios/portfolio.service';
   styleUrls: ['./acerca-de.component.css'],
 })
 export class AcercaDeComponent implements OnInit {
-
-  miPortfolio: any
+  dataAcercaDe: any;
 
   constructor(private datosPortfolio: PortfolioService) {}
 
   ngOnInit(): void {
     this.datosPortfolio.obtenerDatos().subscribe((data) => {
-      console.log(data);
-      this.miPortfolio = data
+      this.dataAcercaDe = data?.AcercaDe;
     });
   }
 }

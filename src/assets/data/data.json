@@ -1,6 +1,26 @@
 {
   "AcercaDe": {
-    "titulo": "Mi experiencia y habilidades profesionales",
+    "titulo": "Mi experiencia y habilidades profesionalesss",
     "descripcion": "Lorem acercade dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-  }
+  },
+  "Hero": {
+    "titulo": ""
+  },
+  "Proyectos": [
+    {
+      "titulo": "Proyecto1",
+      "descripcion": "Breve descripcion de proyecto 1",
+      "img": "assets/project1.webp"
+    },
+    {
+      "titulo": "Proyecto2",
+      "descripcion": "Breve descripcion de proyecto 2",
+      "img": "assets/project2.webp"
+    },
+    {
+      "titulo": "Proyecto3",
+      "descripcion": "Breve descripcion de proyecto 3",
+      "img": "assets/project3.webp"
+    }
+  ]
 }

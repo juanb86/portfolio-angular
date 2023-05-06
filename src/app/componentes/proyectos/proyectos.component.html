@@ -1,0 +1,27 @@
+<div class="container py-5 mb-5" id="custom-cards">
+  <h3 class="fw-bold lh-1 mb-3">
+    Proyectos y <span style="color: #ffc31d">caso de estudio</span>
+  </h3>
+
+  <div
+    *ngFor="let proyecto of dataProyectos"
+    class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5"
+  >
+    <div class="col">
+      <div class="card text-bg-dark">
+        <img
+          [src]="proyecto.img"
+          class="card-img"
+          alt="..."
+          style="filter: brightness(0.5)"
+        />
+        <div class="card-img-overlay">
+          <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">
+            {{ proyecto.titulo }}
+          </h3>
+          <p class="mb-4 lead fw-bold">{{ proyecto.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
