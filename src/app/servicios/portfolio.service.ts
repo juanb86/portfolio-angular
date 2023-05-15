@@ -19,6 +19,40 @@ export class PortfolioService {
     return this.http.put<any>(`${this.apiUrl}/persona`, persona);
   }
 
+  // Endpoints Educacion
+  obtenerEducacion(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/educacion/user/3`);
+  }
+
+  modificarEducacion(id: number, educacion: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/educacion/${id}`, educacion);
+  }
+
+  borrarEducacion(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/educacion/${id}`);
+  }
+
+  crearEducacion(educacion: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/educacion`, educacion);
+  }
+
+  // Endpoints Habilidad
+  obtenerHabilidad(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/habilidad/user/3`);
+  }
+
+  modificarHabilidad(id: number, habilidad: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/habilidad/${id}`, habilidad);
+  }
+
+  borrarHabilidad(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/habilidad/${id}`);
+  }
+
+  crearHabilidad(habilidad: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/habilidad`, habilidad);
+  }
+
   // Endpoints Proyectos
   getProyectosPorPersona(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/personas/${id}/proyectos`);

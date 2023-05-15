@@ -14,6 +14,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
+import { HabilidadComponent } from './componentes/habilidad/habilidad.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { InterceptorService } from './servicios/interceptor.service';
     EducacionComponent,
     LoginComponent,
     PortfolioComponent,
+    HabilidadComponent,
   ],
   imports: [
     BrowserModule,

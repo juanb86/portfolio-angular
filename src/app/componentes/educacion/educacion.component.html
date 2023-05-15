@@ -21,75 +21,240 @@
       desarrollo full-stack con el stack MERN.
     </p>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-      <div class="feature col">
-        <p class="mb-1">
-          Facultad de Ciencias Exactas, Ingeniería y Agrimensura (FCEIA)
-        </p>
-        <h5 class="mb-2 fs-3 fw-bold">Licenciatura en Física</h5>
-        <h3 class="mb-3 fs-6 text-uppercase header-color">
-          Fisica - Matiematicas - Programmación
-        </h3>
-        <h3 class="mb-3 fs-6 text-uppercase">Febrero 2005- Noviembre 2008</h3>
-        <p>
-          Formación universitaria en física que abarca desde los fundamentos
-          teóricos hasta las aplicaciones prácticas en diversos campos. No se
-          completó la carrera.
-        </p>
+      <div class="feature col" *ngFor="let educacion of educaciones">
+        <div *ngIf="modificandoEducacionId !== educacion.id">
+          <div *ngIf="estaAutenticado" class="mb-3 w-full text-end">
+            <button
+              class="btn btn-success btn-solid"
+              (click)="
+                abrirFormularioModificacionEducacion(educacion.id);
+                establecerValoresEducacion(educacion)
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                width="1em"
+                height="1em"
+              >
+                <path
+                  d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"
+                />
+              </svg>
+            </button>
+            <button
+              class="btn btn-danger btn-ghost m-1"
+              (click)="borrarEducacion(educacion.id)"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                width="1em"
+                height="1em"
+              >
+                <path
+                  d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"
+                />
+              </svg>
+            </button>
+          </div>
+          <p class="mb-1">
+            {{ educacion.institucion }}
+          </p>
+          <h5 class="mb-2 fs-3 fw-bold">{{ educacion.titulo }}</h5>
+          <h3 class="mb-3 fs-6 text-uppercase header-color">
+            {{ educacion.especialidad }}
+          </h3>
+          <h3 class="mb-3 fs-6 text-uppercase">
+            {{ educacion.fechaInicio
+            }}<span *ngIf="educacion.fechaFin">
+              hasta {{ educacion.fechaFin }}</span
+            >
+          </h3>
+          <p>
+            {{ educacion.descripcion }}
+          </p>
+        </div>
+        <div *ngIf="modificandoEducacionId === educacion.id" class="">
+          <form
+            [formGroup]="formModificarEducacion"
+            class="m-3"
+            (ngSubmit)="modificarEducacion($event)"
+          >
+            <div class="mb-3">
+              <label for="inputInstitucion" class="form-label login-label"
+                >Institucion</label
+              >
+              <input
+                type="text"
+                formControlName="institucion"
+                class="form-control"
+                id="inputInstitucion"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputTitulo" class="form-label login-label"
+                >Titulo</label
+              >
+              <input
+                type="text"
+                formControlName="titulo"
+                class="form-control"
+                id="inputTitulo"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputEspecialidad" class="form-label login-label"
+                >Especialidad</label
+              >
+              <input
+                type="text"
+                formControlName="especialidad"
+                class="form-control"
+                id="inputEspecialidad"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputFechaInicio" class="form-label login-label"
+                >Fecha Inicio</label
+              >
+              <input
+                type="date"
+                formControlName="fechaInicio"
+                class="form-control"
+                id="inputFechaInicio"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputFechaFin" class="form-label login-label"
+                >Fecha Fin</label
+              >
+              <input
+                type="date"
+                formControlName="fechaFin"
+                class="form-control"
+                id="inputFechaFin"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="inputDescripcion" class="form-label login-label"
+                >Descripcion de Educacion</label
+              >
+              <input
+                type="text"
+                formControlName="descripcion"
+                class="form-control"
+                id="inputDescripcion"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary btn-solid">
+              Enviar
+            </button>
+            <button
+              type="submit"
+              class="btn btn-danger btn-ghost ms-1"
+              (click)="cerrarFormularioModificacionEducacion()"
+            >
+              Cancelar
+            </button>
+          </form>
+        </div>
       </div>
-      <div class="feature col">
-        <p class="mb-1">Universidad de Helsinki</p>
-        <h5 class="mb-2 fs-3 fw-bold">Curso Online de Java</h5>
-        <h3 class="mb-3 fs-6 text-uppercase header-color">
-          Java - Estructuras de Datos - Algoritmos
-        </h3>
-        <h3 class="mb-3 fs-6 text-uppercase">Enero 2020 - Junio 2020</h3>
-        <p>
-          Curso en línea que aborda los fundamentos de la programación en Java y
-          el desarrollo de aplicaciones utilizando este lenguaje.
-        </p>
-      </div>
-      <div class="feature col">
-        <p class="mb-1">FreeCodeCamp</p>
-        <h5 class="mb-2 fs-3 fw-bold">
-          Curso Online de HTML, CSS, JavaScript y React
-        </h5>
-        <h3 class="mb-3 fs-6 text-uppercase header-color">
-          HTML - CSS - JavaScript - React
-        </h3>
-        <h3 class="mb-3 fs-6 text-uppercase">Julio 2020 - Diciembre 2020</h3>
-        <p>
-          Curso en línea que cubre los aspectos básicos y avanzados de la
-          programación web, incluyendo HTML, CSS, JavaScript y React para el
-          desarrollo de aplicaciones web modernas.
-        </p>
-      </div>
-      <div class="feature col">
-        <p class="mb-1">Udemy, Brad Traversy</p>
-        <h5 class="mb-2 fs-3 fw-bold">Curso de Stack MERN</h5>
-        <h3 class="mb-3 fs-6 text-uppercase header-color">
-          MongoDB - Express.js - React - Node.js
-        </h3>
-        <h3 class="mb-3 fs-6 text-uppercase">Enero 2021 - Mayo 2021</h3>
-        <p>
-          curso en línea que enseña cómo desarrollar aplicaciones web full-stack
-          utilizando el stack MERN, incluyendo la creación de bases de datos,
-          servidores, interfaces de usuario y la integración de tecnologías
-          front-end y back-end.
-        </p>
-      </div>
-      <div class="feature col">
-        <p class="mb-1">Epic React, Kent C. Dodds</p>
-        <h5 class="mb-2 fs-3 fw-bold">Curso Online Autogestionado de React</h5>
-        <h3 class="mb-3 fs-6 text-uppercase header-color">
-          Desarrollo Avanzado React
-        </h3>
-        <h3 class="mb-3 fs-6 text-uppercase">Julio 2021 - Enero 2022</h3>
-        <p>
-          curso en línea autogestionado que profundiza en el uso de React para
-          el desarrollo de aplicaciones web, abordando temas avanzados y buenas
-          prácticas en el ecosistema de React.
-        </p>
-      </div>
+    </div>
+    <button
+      *ngIf="!agregandoEducacion && estaAutenticado"
+      class="btn btn-primary btn-solid m-3"
+      (click)="abrirFormularioCrearEducacion()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+        width="1em"
+        height="1em"
+      >
+        <path
+          d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+        />
+      </svg>
+    </button>
+    <div *ngIf="agregandoEducacion">
+      <form
+        [formGroup]="formAgregarEducacion"
+        class="m-3"
+        (ngSubmit)="agregarEducacion($event)"
+      >
+        <div class="mb-3">
+          <label for="inputInstitucion" class="form-label login-label"
+            >Institucion</label
+          >
+          <input
+            type="text"
+            formControlName="institucion"
+            class="form-control"
+            id="inputInstitucion"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="inputTitulo" class="form-label login-label">Titulo</label>
+          <input
+            type="text"
+            formControlName="titulo"
+            class="form-control"
+            id="inputTitulo"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="inputEspecialidad" class="form-label login-label"
+            >Especialidad</label
+          >
+          <input
+            type="text"
+            formControlName="especialidad"
+            class="form-control"
+            id="inputEspecialidad"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="inputFechaInicio" class="form-label login-label"
+            >Fecha Inicio</label
+          >
+          <input
+            type="date"
+            formControlName="fechaInicio"
+            class="form-control"
+            id="inputFechaInicio"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="inputFechaFin" class="form-label login-label"
+            >Fecha Fin</label
+          >
+          <input
+            type="date"
+            formControlName="fechaFin"
+            class="form-control"
+            id="inputFechaFin"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="inputDescripcion" class="form-label login-label"
+            >Descripcion de Educacion</label
+          >
+          <input
+            type="text"
+            formControlName="descripcion"
+            class="form-control"
+            id="inputDescripcion"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary btn-solid">Enviar</button>
+        <button
+          class="btn btn-danger btn-ghost ms-1"
+          (click)="cerrarFormularioCrearEducacion()"
+        >
+          Cancelar
+        </button>
+      </form>
     </div>
   </div>
 </section>

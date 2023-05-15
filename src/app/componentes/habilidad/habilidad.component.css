@@ -1,0 +1,35 @@
+#skills {
+  color: var(--floral-white);
+  background-color: var(--onyx);
+  text-align: center;
+}
+#skills > div > h3 {
+  color: var(--floral-white);
+}
+.progress-bar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: auto;
+  background: radial-gradient(
+      closest-side,
+      var(--onyx) 74%,
+      transparent 75% 100%
+    ),
+    conic-gradient(var(--chartreuse) 25%, #474747 0);
+}
+.progress-container {
+  position: absolute;
+  width: 100%;
+}
+.progress-title {
+  position: relative;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.skills-title {
+  z-index: 1;
+  text-shadow: 0 0 4px black;
+}
