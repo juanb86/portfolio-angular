@@ -53,6 +53,23 @@ export class PortfolioService {
     return this.http.post<any>(`${this.apiUrl}/habilidad`, habilidad);
   }
 
+  // Endpoints Experiencia
+  obtenerExperiencia(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/experiencia/user/3`);
+  }
+
+  modificarExperiencia(id: number, experiencia: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/experiencia/${id}`, experiencia);
+  }
+
+  borrarExperiencia(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/experiencia/${id}`);
+  }
+
+  crearExperiencia(experiencia: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/experiencia`, experiencia);
+  }
+
   // Endpoints Proyectos
   getProyectosPorPersona(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/personas/${id}/proyectos`);

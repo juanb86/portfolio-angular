@@ -15,6 +15,7 @@ import { PortfolioComponent } from './componentes/portfolio/portfolio.component'
 import { PortfolioService } from './servicios/portfolio.service';
 import { InterceptorService } from './servicios/interceptor.service';
 import { HabilidadComponent } from './componentes/habilidad/habilidad.component';
+import { ExperienciaComponent } from './componentes/experiencia/experiencia.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HabilidadComponent } from './componentes/habilidad/habilidad.component'
     LoginComponent,
     PortfolioComponent,
     HabilidadComponent,
+    ExperienciaComponent,
   ],
   imports: [
     BrowserModule,
