@@ -10,6 +10,16 @@ export class PortfolioService {
 
   constructor(private http: HttpClient) {}
 
+  // Endpoints Personas
+  obtenerPersona(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/persona/1`);
+  }
+
+  modificarPersona(persona: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/persona`, persona);
+  }
+
+  // Endpoints Proyectos
   getProyectosPorPersona(id: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/personas/${id}/proyectos`);
   }

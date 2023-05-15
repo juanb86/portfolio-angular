@@ -48,7 +48,33 @@
           <a class="nav-link" href="/#Proyectos">Proyectos</a>
         </li>
       </ul>
-      <button type="button" class="btn btn-primary btn-lg gap-3 btn-ghost">
+
+      <button
+        *ngIf="estaAutenticado"
+        type="button"
+        class="btn btn-primary btn-lg gap-3 btn-ghost"
+        (click)="logout()"
+      >
+        Logout
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 56.092 49.389"
+            width="1em"
+            height="1em"
+          >
+            <path
+              d="M35.278 47.625v-1.764h17.639V3.528h-17.64V0h20.816v49.389H35.278ZM21.52 40.042l-1.213-1.252 6.158-6.166 6.158-6.166H0v-3.527h32.624l-6.165-6.173-6.165-6.173 1.235-1.234 1.234-1.234 8.284 8.29 8.284 8.29-8.299 8.298-8.298 8.298z"
+            />
+          </svg>
+        </span>
+      </button>
+      <button
+        *ngIf="!estaAutenticado"
+        type="button"
+        class="btn btn-primary btn-lg gap-3 btn-ghost"
+        [routerLink]="['/login']"
+      >
         Login
         <span>
           <svg
