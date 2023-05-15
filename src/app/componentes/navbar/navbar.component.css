@@ -1,0 +1,24 @@
+#navbar-top > ul > li > a {
+  padding: 0px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0.55;
+  color: var(--raisin-black);
+  text-transform: uppercase;
+  transition: opacity 300ms;
+}
+#navbar-top > ul > li > a:hover {
+  opacity: 1;
+}
+.navbar-menu {
+  border: none;
+  font-size: 32px;
+  background: none;
+  fill: var(--raisin-black);
+}
+.navbar-menu:hover {
+  fill: var(--onyx);
+}
+.navbar-menu:focus {
+  box-shadow: none;
+}

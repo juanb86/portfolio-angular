@@ -1,0 +1,14 @@
+#inicio-info {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-image: url(/assets/circulo.png);
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: right bottom;
+}
+#inicio-imagen {
+  background-image: url(/assets/trama.png);
+}
+#inicio-imagen > img {
+  transform: translate(-50px, 50px);
+}

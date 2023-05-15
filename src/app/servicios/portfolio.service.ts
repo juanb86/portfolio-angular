@@ -6,10 +6,26 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class PortfolioService {
+  private apiUrl = 'http://localhost:8080';
+
   constructor(private http: HttpClient) {}
 
-  obtenerDatos(): Observable<any> {
-    console.log('LLAMADA DESDE SERVICIO');
-    return this.http.get('./assets/data/data.json');
+  getProyectosPorPersona(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/personas/${id}/proyectos`);
+  }
+
+  agregarProyectoAPersona(id: number, proyecto: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.apiUrl}/personas/${id}/proyectos`,
+      JSON.stringify(proyecto)
+    );
+  }
+
+  eliminarProyecto(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/proyectos/${id}`);
+  }
+
+  modificarProyecto(id: number, nombre: string): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/proyectos/${id}`, { nombre });
   }
 }

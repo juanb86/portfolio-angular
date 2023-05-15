@@ -3,22 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EncabezadoComponent } from './componentes/encabezado/encabezado.component';
 import { HeroComponent } from './componentes/hero/hero.component';
-import { AcercaDeComponent } from './componentes/acerca-de/acerca-de.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ProyectosComponent } from './componentes/proyectos/proyectos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { EducacionComponent } from './componentes/educacion/educacion.component';
+import { LoginComponent } from './componentes/login/login.component';
+import { PortfolioComponent } from './componentes/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EncabezadoComponent,
     HeroComponent,
-    AcercaDeComponent,
     ProyectosComponent,
+    NavbarComponent,
+    EducacionComponent,
+    LoginComponent,
+    PortfolioComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
