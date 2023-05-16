@@ -22,3 +22,9 @@
 .navbar-menu:focus {
   box-shadow: none;
 }
+
+@media only screen and (max-width: 768px) {
+  #navbar-top > ul > li > a {
+    padding: 1rem;
+  }
+}

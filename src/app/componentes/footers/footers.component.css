@@ -1,0 +1,25 @@
+#footer {
+  background-color: var(--onyx);
+  color: var(--floral-white);
+}
+.social-link {
+  fill: var(--timberwolf);
+  font-size: 20px;
+  transition: all 300ms;
+}
+.social-link:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1);
+}
+.footer-menu {
+  border: none;
+  font-size: 14px;
+  background: none;
+  color: var(--timberwolf);
+}
+.footer-menu:hover {
+  color: var(--floral-white);
+}
+.footer-menu:focus {
+  box-shadow: none;
+}

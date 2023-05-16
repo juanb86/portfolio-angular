@@ -1,9 +1,9 @@
-#skills {
+#habilidad {
   color: var(--floral-white);
   background-color: var(--onyx);
   text-align: center;
 }
-#skills > div > h3 {
+#habilidad > div > h3 {
   color: var(--floral-white);
 }
 .progress-bar {

@@ -12,3 +12,9 @@
 #inicio-imagen > img {
   transform: translate(-50px, 50px);
 }
+
+@media only screen and (max-width: 768px) {
+  #inicio-imagen > img {
+    transform: translate(20px, 40px);
+  }
+}

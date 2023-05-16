@@ -70,23 +70,20 @@ export class PortfolioService {
     return this.http.post<any>(`${this.apiUrl}/experiencia`, experiencia);
   }
 
-  // Endpoints Proyectos
-  getProyectosPorPersona(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/personas/${id}/proyectos`);
+  // Endpoints Proyecto
+  obtenerProyecto(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/proyecto/user/3`);
   }
 
-  agregarProyectoAPersona(id: number, proyecto: any): Observable<any> {
-    return this.http.post<any>(
-      `${this.apiUrl}/personas/${id}/proyectos`,
-      JSON.stringify(proyecto)
-    );
+  modificarProyecto(id: number, proyecto: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/proyecto/${id}`, proyecto);
   }
 
-  eliminarProyecto(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/proyectos/${id}`);
+  borrarProyecto(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/proyecto/${id}`);
   }
 
-  modificarProyecto(id: number, nombre: string): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/proyectos/${id}`, { nombre });
+  crearProyecto(proyecto: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/proyecto`, proyecto);
   }
 }
