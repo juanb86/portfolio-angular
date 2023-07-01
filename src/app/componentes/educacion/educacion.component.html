@@ -88,9 +88,42 @@
               <input
                 type="text"
                 formControlName="institucion"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarEducacion('institucion')?.errors &&
+                    valorModificarEducacion('institucion')?.touched,
+                  'is-valid':
+                    !valorModificarEducacion('institucion')?.errors &&
+                    valorModificarEducacion('institucion')?.touched
+                }"
                 class="form-control"
                 id="inputInstitucion"
               />
+              <div
+                *ngIf="
+                  valorModificarEducacion('institucion')?.errors &&
+                  valorModificarEducacion('institucion')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarEducacion('institucion')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo intitucion es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarEducacion('institucion')?.hasError(
+                      'minlength'
+                    )
+                  "
+                  class="text-danger"
+                >
+                  El campo intitucion debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputTitulo" class="form-label login-label"
@@ -99,9 +132,40 @@
               <input
                 type="text"
                 formControlName="titulo"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarEducacion('titulo')?.errors &&
+                    valorModificarEducacion('titulo')?.touched,
+                  'is-valid':
+                    !valorModificarEducacion('titulo')?.errors &&
+                    valorModificarEducacion('titulo')?.touched
+                }"
                 class="form-control"
                 id="inputTitulo"
               />
+              <div
+                *ngIf="
+                  valorModificarEducacion('titulo')?.errors &&
+                  valorModificarEducacion('titulo')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarEducacion('titulo')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo titulo es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarEducacion('titulo')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo titulo debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputEspecialidad" class="form-label login-label"
@@ -110,9 +174,44 @@
               <input
                 type="text"
                 formControlName="especialidad"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarEducacion('especialidad')?.errors &&
+                    valorModificarEducacion('especialidad')?.touched,
+                  'is-valid':
+                    !valorModificarEducacion('especialidad')?.errors &&
+                    valorModificarEducacion('especialidad')?.touched
+                }"
                 class="form-control"
                 id="inputEspecialidad"
               />
+              <div
+                *ngIf="
+                  valorModificarEducacion('especialidad')?.errors &&
+                  valorModificarEducacion('especialidad')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarEducacion('especialidad')?.hasError(
+                      'required'
+                    )
+                  "
+                  class="text-danger"
+                >
+                  El campo especialidad es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarEducacion('especialidad')?.hasError(
+                      'minlength'
+                    )
+                  "
+                  class="text-danger"
+                >
+                  El campo especialidad debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputFechaInicio" class="form-label login-label"
@@ -121,9 +220,32 @@
               <input
                 type="date"
                 formControlName="fechaInicio"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarEducacion('fechaInicio')?.errors &&
+                    valorModificarEducacion('fechaInicio')?.touched,
+                  'is-valid':
+                    !valorModificarEducacion('fechaInicio')?.errors &&
+                    valorModificarEducacion('fechaInicio')?.touched
+                }"
                 class="form-control"
                 id="inputFechaInicio"
               />
+              <div
+                *ngIf="
+                  valorModificarEducacion('fechaInicio')?.errors &&
+                  valorModificarEducacion('fechaInicio')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarEducacion('fechaInicio')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo fecha de inicio es requerido.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputFechaFin" class="form-label login-label"
@@ -143,11 +265,50 @@
               <input
                 type="text"
                 formControlName="descripcion"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarEducacion('descripcion')?.errors &&
+                    valorModificarEducacion('descripcion')?.touched,
+                  'is-valid':
+                    !valorModificarEducacion('descripcion')?.errors &&
+                    valorModificarEducacion('descripcion')?.touched
+                }"
                 class="form-control"
                 id="inputDescripcion"
               />
+              <div
+                *ngIf="
+                  valorModificarEducacion('descripcion')?.errors &&
+                  valorModificarEducacion('descripcion')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarEducacion('descripcion')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo descripcion es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarEducacion('descripcion')?.hasError(
+                      'minlength'
+                    )
+                  "
+                  class="text-danger"
+                >
+                  El campo descripcion debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-solid">
+            <button
+              [ngClass]="{
+                disabled: !formModificarEducacion.valid
+              }"
+              type="submit"
+              class="btn btn-primary btn-solid"
+            >
               Enviar
             </button>
             <button
@@ -190,18 +351,74 @@
           <input
             type="text"
             formControlName="institucion"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarEducacion('institucion')?.errors &&
+                valorAgregarEducacion('institucion')?.touched,
+              'is-valid':
+                !valorAgregarEducacion('institucion')?.errors &&
+                valorAgregarEducacion('institucion')?.touched
+            }"
             class="form-control"
             id="inputInstitucion"
           />
+          <div
+            *ngIf="
+              valorAgregarEducacion('institucion')?.errors &&
+              valorAgregarEducacion('institucion')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarEducacion('institucion')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo intitucion es requerido.
+            </p>
+            <p
+              *ngIf="
+                valorAgregarEducacion('institucion')?.hasError('minlength')
+              "
+              class="text-danger"
+            >
+              El campo intitucion debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputTitulo" class="form-label login-label">Titulo</label>
           <input
             type="text"
             formControlName="titulo"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarEducacion('titulo')?.errors &&
+                valorAgregarEducacion('titulo')?.touched,
+              'is-valid':
+                !valorAgregarEducacion('titulo')?.errors &&
+                valorAgregarEducacion('titulo')?.touched
+            }"
             class="form-control"
             id="inputTitulo"
           />
+          <div
+            *ngIf="
+              valorAgregarEducacion('titulo')?.errors &&
+              valorAgregarEducacion('titulo')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarEducacion('titulo')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo titulo es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarEducacion('titulo')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo titulo debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputEspecialidad" class="form-label login-label"
@@ -210,9 +427,40 @@
           <input
             type="text"
             formControlName="especialidad"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarEducacion('especialidad')?.errors &&
+                valorAgregarEducacion('especialidad')?.touched,
+              'is-valid':
+                !valorAgregarEducacion('especialidad')?.errors &&
+                valorAgregarEducacion('especialidad')?.touched
+            }"
             class="form-control"
             id="inputEspecialidad"
           />
+          <div
+            *ngIf="
+              valorAgregarEducacion('especialidad')?.errors &&
+              valorAgregarEducacion('especialidad')?.touched
+            "
+          >
+            <p
+              *ngIf="
+                valorAgregarEducacion('especialidad')?.hasError('required')
+              "
+              class="text-danger"
+            >
+              El campo especialidad es requerido.
+            </p>
+            <p
+              *ngIf="
+                valorAgregarEducacion('especialidad')?.hasError('minlength')
+              "
+              class="text-danger"
+            >
+              El campo especialidad debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputFechaInicio" class="form-label login-label"
@@ -221,9 +469,30 @@
           <input
             type="date"
             formControlName="fechaInicio"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarEducacion('fechaInicio')?.errors &&
+                valorAgregarEducacion('fechaInicio')?.touched,
+              'is-valid':
+                !valorAgregarEducacion('fechaInicio')?.errors &&
+                valorAgregarEducacion('fechaInicio')?.touched
+            }"
             class="form-control"
             id="inputFechaInicio"
           />
+          <div
+            *ngIf="
+              valorAgregarEducacion('fechaInicio')?.errors &&
+              valorAgregarEducacion('fechaInicio')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarEducacion('fechaInicio')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo fecha de inicio es requerido.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputFechaFin" class="form-label login-label"
@@ -243,11 +512,48 @@
           <input
             type="text"
             formControlName="descripcion"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarEducacion('descripcion')?.errors &&
+                valorAgregarEducacion('descripcion')?.touched,
+              'is-valid':
+                !valorAgregarEducacion('descripcion')?.errors &&
+                valorAgregarEducacion('descripcion')?.touched
+            }"
             class="form-control"
             id="inputDescripcion"
           />
+          <div
+            *ngIf="
+              valorAgregarEducacion('descripcion')?.errors &&
+              valorAgregarEducacion('descripcion')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarEducacion('descripcion')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo descripcion es requerido.
+            </p>
+            <p
+              *ngIf="
+                valorAgregarEducacion('descripcion')?.hasError('minlength')
+              "
+              class="text-danger"
+            >
+              El campo descripcion debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-solid">Enviar</button>
+        <button
+          [ngClass]="{
+            disabled: !formAgregarEducacion.valid
+          }"
+          type="submit"
+          class="btn btn-primary btn-solid"
+        >
+          Enviar
+        </button>
         <button
           class="btn btn-danger btn-ghost ms-1"
           (click)="cerrarFormularioCrearEducacion()"

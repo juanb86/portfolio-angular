@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, map } from 'rxjs';
   providedIn: 'root',
 })
 export class AutenticacionService {
-  url = 'http://localhost:8080/auth/login';
+  url = 'https://portfolio-personal-cvpl.onrender.com/auth/login';
   currentUserSubject: BehaviorSubject<any>;
 
   constructor(private http: HttpClient) {

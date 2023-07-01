@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -22,20 +22,20 @@ export class EducacionComponent implements OnInit {
     private autenticacionService: AutenticacionService
   ) {
     this.formModificarEducacion = this.formBuilder.group({
-      institucion: [''],
-      titulo: [''],
-      especialidad: [''],
-      fechaInicio: [''],
+      institucion: ['', [Validators.required, Validators.minLength(3)]],
+      titulo: ['', [Validators.required, Validators.minLength(3)]],
+      especialidad: ['', [Validators.required, Validators.minLength(3)]],
+      fechaInicio: ['', [Validators.required]],
       fechaFin: [''],
-      descripcion: [''],
+      descripcion: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.formAgregarEducacion = this.formBuilder.group({
-      institucion: [''],
-      titulo: [''],
-      especialidad: [''],
-      fechaInicio: [''],
+      institucion: ['', [Validators.required, Validators.minLength(3)]],
+      titulo: ['', [Validators.required, Validators.minLength(3)]],
+      especialidad: ['', [Validators.required, Validators.minLength(3)]],
+      fechaInicio: ['', [Validators.required]],
       fechaFin: [''],
-      descripcion: [''],
+      descripcion: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -72,21 +72,27 @@ export class EducacionComponent implements OnInit {
 
   modificarEducacion(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .modificarEducacion(
-        this.modificandoEducacionId,
-        this.formModificarEducacion.value
-      )
-      .subscribe(() => {
-        this.obtenerEducacion();
-        this.cerrarFormularioModificacionEducacion();
-      });
+    if (!this.formModificarEducacion.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .modificarEducacion(
+          this.modificandoEducacionId,
+          this.formModificarEducacion.value
+        )
+        .subscribe(() => {
+          this.obtenerEducacion();
+          this.cerrarFormularioModificacionEducacion();
+        });
+    }
   }
 
   borrarEducacion(id: number): void {
-    this.portfolioService.borrarEducacion(id).subscribe(() => {
-      this.obtenerEducacion();
-    });
+    if (confirm('Esta seguro que desea borrar esta entrada?')) {
+      this.portfolioService.borrarEducacion(id).subscribe(() => {
+        this.obtenerEducacion();
+      });
+    }
   }
 
   obtenerEducacion(): void {
@@ -111,5 +117,13 @@ export class EducacionComponent implements OnInit {
       this.autenticacionService.esUsuarioAutenticado
     );
     console.log(this.estaAutenticado);
+  }
+
+  valorAgregarEducacion(campo: String) {
+    return this.formAgregarEducacion.get(`${campo}`);
+  }
+
+  valorModificarEducacion(campo: String) {
+    return this.formModificarEducacion.get(`${campo}`);
   }
 }
