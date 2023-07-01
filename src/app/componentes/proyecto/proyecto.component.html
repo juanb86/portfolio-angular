@@ -96,9 +96,40 @@
               <input
                 type="text"
                 formControlName="cliente"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarProyecto('cliente')?.errors &&
+                    valorModificarProyecto('cliente')?.touched,
+                  'is-valid':
+                    !valorModificarProyecto('cliente')?.errors &&
+                    valorModificarProyecto('cliente')?.touched
+                }"
                 class="form-control"
                 id="inputCliente"
               />
+              <div
+                *ngIf="
+                  valorModificarProyecto('cliente')?.errors &&
+                  valorModificarProyecto('cliente')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarProyecto('cliente')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo cliente es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarProyecto('cliente')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo cliente debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputNombre" class="form-label login-label"
@@ -107,9 +138,38 @@
               <input
                 type="text"
                 formControlName="nombre"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarProyecto('nombre')?.errors &&
+                    valorModificarProyecto('nombre')?.touched,
+                  'is-valid':
+                    !valorModificarProyecto('nombre')?.errors &&
+                    valorModificarProyecto('nombre')?.touched
+                }"
                 class="form-control"
                 id="inputNombre"
               />
+              <div
+                *ngIf="
+                  valorModificarProyecto('nombre')?.errors &&
+                  valorModificarProyecto('nombre')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarProyecto('nombre')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo nombre es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarProyecto('nombre')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo nombre debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputTecnologias" class="form-label login-label"
@@ -118,9 +178,40 @@
               <input
                 type="text"
                 formControlName="tecnologias"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarProyecto('tecnologias')?.errors &&
+                    valorModificarProyecto('tecnologias')?.touched,
+                  'is-valid':
+                    !valorModificarProyecto('tecnologias')?.errors &&
+                    valorModificarProyecto('tecnologias')?.touched
+                }"
                 class="form-control"
                 id="inputTecnologias"
               />
+              <div
+                *ngIf="
+                  valorModificarProyecto('tecnologias')?.errors &&
+                  valorModificarProyecto('tecnologias')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarProyecto('tecnologias')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo tecnologias es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarProyecto('tecnologias')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo tecnologias debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputFechaInicio" class="form-label login-label"
@@ -129,9 +220,32 @@
               <input
                 type="date"
                 formControlName="fechaInicio"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarProyecto('fechaInicio')?.errors &&
+                    valorModificarProyecto('fechaInicio')?.touched,
+                  'is-valid':
+                    !valorModificarProyecto('fechaInicio')?.errors &&
+                    valorModificarProyecto('fechaInicio')?.touched
+                }"
                 class="form-control"
                 id="inputFechaInicio"
               />
+              <div
+                *ngIf="
+                  valorModificarProyecto('fechaInicio')?.errors &&
+                  valorModificarProyecto('fechaInicio')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarProyecto('fechaInicio')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo fecha inicio es requerido.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputFechaFin" class="form-label login-label"
@@ -151,9 +265,40 @@
               <input
                 type="text"
                 formControlName="descripcion"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarProyecto('descripcion')?.errors &&
+                    valorModificarProyecto('descripcion')?.touched,
+                  'is-valid':
+                    !valorModificarProyecto('descripcion')?.errors &&
+                    valorModificarProyecto('descripcion')?.touched
+                }"
                 class="form-control"
                 id="inputDescripcion"
               />
+              <div
+                *ngIf="
+                  valorModificarProyecto('descripcion')?.errors &&
+                  valorModificarProyecto('descripcion')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarProyecto('descripcion')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo descripcion es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarProyecto('descripcion')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo descripcion debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputFoto" class="form-label login-label"
@@ -162,11 +307,44 @@
               <input
                 type="text"
                 formControlName="foto"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarProyecto('foto')?.errors &&
+                    valorModificarProyecto('foto')?.touched,
+                  'is-valid':
+                    !valorModificarProyecto('foto')?.errors &&
+                    valorModificarProyecto('foto')?.touched
+                }"
                 class="form-control"
                 id="inputFoto"
               />
+              <div
+                *ngIf="
+                  valorModificarProyecto('foto')?.errors &&
+                  valorModificarProyecto('foto')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarProyecto('foto')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo foto es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarProyecto('foto')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El campo foto debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-solid">
+            <button
+              [ngClass]="{
+                disabled: !formModificarProyecto.valid
+              }"
+              type="submit"
+              class="btn btn-primary btn-solid"
+            >
               Enviar
             </button>
             <button
@@ -209,18 +387,72 @@
           <input
             type="text"
             formControlName="cliente"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarProyecto('cliente')?.errors &&
+                valorAgregarProyecto('cliente')?.touched,
+              'is-valid':
+                !valorAgregarProyecto('cliente')?.errors &&
+                valorAgregarProyecto('cliente')?.touched
+            }"
             class="form-control"
             id="inputCliente"
           />
+          <div
+            *ngIf="
+              valorAgregarProyecto('cliente')?.errors &&
+              valorAgregarProyecto('cliente')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarProyecto('cliente')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo cliente es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarProyecto('cliente')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo cliente debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputNombre" class="form-label login-label">Nombre</label>
           <input
             type="text"
             formControlName="nombre"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarProyecto('nombre')?.errors &&
+                valorAgregarProyecto('nombre')?.touched,
+              'is-valid':
+                !valorAgregarProyecto('nombre')?.errors &&
+                valorAgregarProyecto('nombre')?.touched
+            }"
             class="form-control"
             id="inputNombre"
           />
+          <div
+            *ngIf="
+              valorAgregarProyecto('nombre')?.errors &&
+              valorAgregarProyecto('nombre')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarProyecto('nombre')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo nombre es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarProyecto('nombre')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo nombre debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputTecnologias" class="form-label login-label"
@@ -229,9 +461,36 @@
           <input
             type="text"
             formControlName="tecnologias"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarProyecto('tecnologias')?.errors &&
+                valorAgregarProyecto('tecnologias')?.touched,
+              'is-valid':
+                !valorAgregarProyecto('tecnologias')?.errors &&
+                valorAgregarProyecto('tecnologias')?.touched
+            }"
             class="form-control"
             id="inputTecnologias"
           />
+          <div
+            *ngIf="
+              valorAgregarProyecto('tecnologias')?.errors &&
+              valorAgregarProyecto('tecnologias')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarProyecto('tecnologias')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo tecnologias es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarProyecto('tecnologias')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo tecnologias debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputFechaInicio" class="form-label login-label"
@@ -240,9 +499,30 @@
           <input
             type="date"
             formControlName="fechaInicio"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarProyecto('fechaInicio')?.errors &&
+                valorAgregarProyecto('fechaInicio')?.touched,
+              'is-valid':
+                !valorAgregarProyecto('fechaInicio')?.errors &&
+                valorAgregarProyecto('fechaInicio')?.touched
+            }"
             class="form-control"
             id="inputFechaInicio"
           />
+          <div
+            *ngIf="
+              valorAgregarProyecto('fechaInicio')?.errors &&
+              valorAgregarProyecto('fechaInicio')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarProyecto('fechaInicio')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo fecha inicio es requerido.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputFechaFin" class="form-label login-label"
@@ -262,20 +542,82 @@
           <input
             type="text"
             formControlName="descripcion"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarProyecto('descripcion')?.errors &&
+                valorAgregarProyecto('descripcion')?.touched,
+              'is-valid':
+                !valorAgregarProyecto('descripcion')?.errors &&
+                valorAgregarProyecto('descripcion')?.touched
+            }"
             class="form-control"
             id="inputDescripcion"
           />
+          <div
+            *ngIf="
+              valorAgregarProyecto('descripcion')?.errors &&
+              valorAgregarProyecto('descripcion')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarProyecto('descripcion')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo descripcion es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarProyecto('descripcion')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo descripcion debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputFoto" class="form-label login-label">URL Foto</label>
           <input
             type="text"
             formControlName="foto"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarProyecto('foto')?.errors &&
+                valorAgregarProyecto('foto')?.touched,
+              'is-valid':
+                !valorAgregarProyecto('foto')?.errors &&
+                valorAgregarProyecto('foto')?.touched
+            }"
             class="form-control"
             id="inputFoto"
           />
+          <div
+            *ngIf="
+              valorAgregarProyecto('foto')?.errors &&
+              valorAgregarProyecto('foto')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarProyecto('foto')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo foto es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarProyecto('foto')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo foto debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-solid">Enviar</button>
+        <button
+          [ngClass]="{
+            disabled: !formAgregarProyecto.valid
+          }"
+          type="submit"
+          class="btn btn-primary btn-solid"
+        >
+          Enviar
+        </button>
         <button
           class="btn btn-danger btn-ghost ms-1"
           (click)="cerrarFormularioCrearProyecto()"

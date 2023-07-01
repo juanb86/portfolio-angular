@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -22,19 +22,19 @@ export class ExperienciaComponent implements OnInit {
     private autenticacionService: AutenticacionService
   ) {
     this.formModificarExperiencia = this.formBuilder.group({
-      cliente: [''],
-      ocupacion: [''],
-      descripcion: [''],
-      tecnologias: [''],
-      fechaInicio: [''],
+      cliente: ['', [Validators.required, Validators.minLength(3)]],
+      ocupacion: ['', [Validators.required, Validators.minLength(3)]],
+      descripcion: ['', [Validators.required, Validators.minLength(3)]],
+      tecnologias: ['', [Validators.required, Validators.minLength(3)]],
+      fechaInicio: ['', [Validators.required]],
       fechaFin: [''],
     });
     this.formAgregarExperiencia = this.formBuilder.group({
-      cliente: [''],
-      ocupacion: [''],
-      descripcion: [''],
-      tecnologias: [''],
-      fechaInicio: [''],
+      cliente: ['', [Validators.required, Validators.minLength(3)]],
+      ocupacion: ['', [Validators.required, Validators.minLength(3)]],
+      descripcion: ['', [Validators.required, Validators.minLength(3)]],
+      tecnologias: ['', [Validators.required, Validators.minLength(3)]],
+      fechaInicio: ['', [Validators.required]],
       fechaFin: [''],
     });
   }
@@ -62,31 +62,41 @@ export class ExperienciaComponent implements OnInit {
 
   agregarExperiencia(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .crearExperiencia(this.formAgregarExperiencia.value)
-      .subscribe(() => {
-        this.obtenerExperiencia();
-        this.cerrarFormularioCrearExperiencia();
-      });
+    if (!this.formAgregarExperiencia.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .crearExperiencia(this.formAgregarExperiencia.value)
+        .subscribe(() => {
+          this.obtenerExperiencia();
+          this.cerrarFormularioCrearExperiencia();
+        });
+    }
   }
 
   modificarExperiencia(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .modificarExperiencia(
-        this.modificandoExperienciaId,
-        this.formModificarExperiencia.value
-      )
-      .subscribe(() => {
-        this.obtenerExperiencia();
-        this.cerrarFormularioModificacionExperiencia();
-      });
+    if (!this.formModificarExperiencia.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .modificarExperiencia(
+          this.modificandoExperienciaId,
+          this.formModificarExperiencia.value
+        )
+        .subscribe(() => {
+          this.obtenerExperiencia();
+          this.cerrarFormularioModificacionExperiencia();
+        });
+    }
   }
 
   borrarExperiencia(id: number): void {
-    this.portfolioService.borrarExperiencia(id).subscribe(() => {
-      this.obtenerExperiencia();
-    });
+    if (confirm('Esta seguro que desea borrar esta entrada?')) {
+      this.portfolioService.borrarExperiencia(id).subscribe(() => {
+        this.obtenerExperiencia();
+      });
+    }
   }
 
   obtenerExperiencia(): void {
@@ -111,5 +121,13 @@ export class ExperienciaComponent implements OnInit {
       this.autenticacionService.esUsuarioAutenticado
     );
     console.log(this.estaAutenticado);
+  }
+
+  valorAgregarExperiencia(campo: String) {
+    return this.formAgregarExperiencia.get(`${campo}`);
+  }
+
+  valorModificarExperiencia(campo: String) {
+    return this.formModificarExperiencia.get(`${campo}`);
   }
 }

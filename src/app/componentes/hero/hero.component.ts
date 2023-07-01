@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -20,13 +20,13 @@ export class HeroComponent implements OnInit {
     private autenticacionService: AutenticacionService
   ) {
     this.formModificarPersona = this.formBuilder.group({
-      nombre: [''],
-      apellido: [''],
-      titulo: [''],
-      github: [''],
-      linkedin: [''],
-      info: [''],
-      foto: [''],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      apellido: ['', [Validators.required, Validators.minLength(3)]],
+      titulo: ['', [Validators.required, Validators.minLength(3)]],
+      github: ['', [Validators.required, Validators.minLength(3)]],
+      linkedin: ['', [Validators.required, Validators.minLength(3)]],
+      info: ['', [Validators.required, Validators.minLength(3)]],
+      foto: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -51,12 +51,16 @@ export class HeroComponent implements OnInit {
 
   actualizarInformacionPersona(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .modificarPersona(this.formModificarPersona.value)
-      .subscribe(() => {
-        this.obtenerPersona();
-        this.cerrarFormularioModificacionPersona();
-      });
+    if (!this.formModificarPersona.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .modificarPersona(this.formModificarPersona.value)
+        .subscribe(() => {
+          this.obtenerPersona();
+          this.cerrarFormularioModificacionPersona();
+        });
+    }
   }
 
   esUsuarioAutenticado() {
@@ -76,5 +80,9 @@ export class HeroComponent implements OnInit {
       info: this.persona.info,
       foto: this.persona.foto,
     });
+  }
+
+  valorModificarPersona(campo: String) {
+    return this.formModificarPersona.get(`${campo}`);
   }
 }

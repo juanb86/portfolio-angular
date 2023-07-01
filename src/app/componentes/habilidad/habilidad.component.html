@@ -94,9 +94,40 @@
               <input
                 type="text"
                 formControlName="nombre"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarHabilidad('nombre')?.errors &&
+                    valorModificarHabilidad('nombre')?.touched,
+                  'is-valid':
+                    !valorModificarHabilidad('nombre')?.errors &&
+                    valorModificarHabilidad('nombre')?.touched
+                }"
                 class="form-control"
                 id="inputNombre"
               />
+              <div
+                *ngIf="
+                  valorModificarHabilidad('nombre')?.errors &&
+                  valorModificarHabilidad('nombre')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarHabilidad('nombre')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo nombre es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarHabilidad('nombre')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo nombre debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputPorcentaje" class="form-label login-label"
@@ -105,9 +136,44 @@
               <input
                 type="text"
                 formControlName="porcentaje"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarHabilidad('porcentaje')?.errors &&
+                    valorModificarHabilidad('porcentaje')?.touched,
+                  'is-valid':
+                    !valorModificarHabilidad('porcentaje')?.errors &&
+                    valorModificarHabilidad('porcentaje')?.touched
+                }"
                 class="form-control"
                 id="inputPorcentaje"
               />
+              <div
+                *ngIf="
+                  valorModificarHabilidad('porcentaje')?.errors &&
+                  valorModificarHabilidad('porcentaje')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarHabilidad('porcentaje')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo porcentaje es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarHabilidad('porcentaje')?.hasError('min')"
+                  class="text-danger"
+                >
+                  El porcentaje debe ser mayor a 1.
+                </p>
+                <p
+                  *ngIf="valorModificarHabilidad('porcentaje')?.hasError('max')"
+                  class="text-danger"
+                >
+                  El porcentaje no debe ser mayor a 100.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputDescripcion" class="form-label login-label"
@@ -116,11 +182,50 @@
               <input
                 type="text"
                 formControlName="descripcion"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarHabilidad('descripcion')?.errors &&
+                    valorModificarHabilidad('descripcion')?.touched,
+                  'is-valid':
+                    !valorModificarHabilidad('descripcion')?.errors &&
+                    valorModificarHabilidad('descripcion')?.touched
+                }"
                 class="form-control"
                 id="inputDescripcion"
               />
+              <div
+                *ngIf="
+                  valorModificarHabilidad('descripcion')?.errors &&
+                  valorModificarHabilidad('descripcion')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarHabilidad('descripcion')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo descripcion es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarHabilidad('descripcion')?.hasError(
+                      'minlength'
+                    )
+                  "
+                  class="text-danger"
+                >
+                  El campo descripcion debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-solid">
+            <button
+              [ngClass]="{
+                disabled: !formModificarHabilidad.valid
+              }"
+              type="submit"
+              class="btn btn-primary btn-solid"
+            >
               Enviar
             </button>
             <button
@@ -161,20 +266,80 @@
           <input
             type="text"
             formControlName="nombre"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarHabilidad('nombre')?.errors &&
+                valorAgregarHabilidad('nombre')?.touched,
+              'is-valid':
+                !valorAgregarHabilidad('nombre')?.errors &&
+                valorAgregarHabilidad('nombre')?.touched
+            }"
             class="form-control"
             id="inputNombre"
           />
+          <div
+            *ngIf="
+              valorAgregarHabilidad('nombre')?.errors &&
+              valorAgregarHabilidad('nombre')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarHabilidad('nombre')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo nombre es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarHabilidad('nombre')?.hasError('minlength')"
+              class="text-danger"
+            >
+              El campo nombre debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputPorcentaje" class="form-label login-label"
             >Porcentaje</label
           >
           <input
-            type="text"
+            type="number"
             formControlName="porcentaje"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarHabilidad('porcentaje')?.errors &&
+                valorAgregarHabilidad('porcentaje')?.touched,
+              'is-valid':
+                !valorAgregarHabilidad('porcentaje')?.errors &&
+                valorAgregarHabilidad('porcentaje')?.touched
+            }"
             class="form-control"
             id="inputPorcentaje"
           />
+          <div
+            *ngIf="
+              valorAgregarHabilidad('porcentaje')?.errors &&
+              valorAgregarHabilidad('porcentaje')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarHabilidad('porcentaje')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo porcentaje es requerido.
+            </p>
+            <p
+              *ngIf="valorAgregarHabilidad('porcentaje')?.hasError('min')"
+              class="text-danger"
+            >
+              El porcentaje debe ser mayor a 1.
+            </p>
+            <p
+              *ngIf="valorAgregarHabilidad('porcentaje')?.hasError('max')"
+              class="text-danger"
+            >
+              El porcentaje no debe ser mayor a 100.
+            </p>
+          </div>
         </div>
         <div class="mb-3">
           <label for="inputDescripcion" class="form-label login-label"
@@ -183,11 +348,48 @@
           <input
             type="text"
             formControlName="descripcion"
+            [ngClass]="{
+              'is-invalid':
+                valorAgregarHabilidad('descripcion')?.errors &&
+                valorAgregarHabilidad('descripcion')?.touched,
+              'is-valid':
+                !valorAgregarHabilidad('descripcion')?.errors &&
+                valorAgregarHabilidad('descripcion')?.touched
+            }"
             class="form-control"
             id="inputDescripcion"
           />
+          <div
+            *ngIf="
+              valorAgregarHabilidad('descripcion')?.errors &&
+              valorAgregarHabilidad('descripcion')?.touched
+            "
+          >
+            <p
+              *ngIf="valorAgregarHabilidad('descripcion')?.hasError('required')"
+              class="text-danger"
+            >
+              El campo descripcion es requerido.
+            </p>
+            <p
+              *ngIf="
+                valorAgregarHabilidad('descripcion')?.hasError('minlength')
+              "
+              class="text-danger"
+            >
+              El campo descripcion debe tener 3 o mas caracteres.
+            </p>
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-solid">Enviar</button>
+        <button
+          [ngClass]="{
+            disabled: !formAgregarHabilidad.valid
+          }"
+          type="submit"
+          class="btn btn-primary btn-solid"
+        >
+          Enviar
+        </button>
         <button
           class="btn btn-danger btn-ghost ms-1"
           (click)="cerrarFormularioCrearHabilidad()"

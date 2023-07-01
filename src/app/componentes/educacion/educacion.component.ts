@@ -62,12 +62,16 @@ export class EducacionComponent implements OnInit {
 
   agregarEducacion(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .crearEducacion(this.formAgregarEducacion.value)
-      .subscribe(() => {
-        this.obtenerEducacion();
-        this.cerrarFormularioCrearEducacion();
-      });
+    if (!this.formAgregarEducacion.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .crearEducacion(this.formAgregarEducacion.value)
+        .subscribe(() => {
+          this.obtenerEducacion();
+          this.cerrarFormularioCrearEducacion();
+        });
+    }
   }
 
   modificarEducacion(event: Event): void {

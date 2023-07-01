@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutenticacionService } from 'src/app/servicios/autenticacion.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
@@ -22,14 +22,20 @@ export class HabilidadComponent implements OnInit {
     private autenticacionService: AutenticacionService
   ) {
     this.formModificarHabilidad = this.formBuilder.group({
-      nombre: [''],
-      porcentaje: [''],
-      descripcion: [''],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      porcentaje: [
+        '',
+        [Validators.required, Validators.min(1), Validators.max(100)],
+      ],
+      descripcion: ['', [Validators.required, Validators.minLength(3)]],
     });
     this.formAgregarHabilidad = this.formBuilder.group({
-      nombre: [''],
-      porcentaje: [''],
-      descripcion: [''],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      porcentaje: [
+        '',
+        [Validators.required, Validators.min(1), Validators.max(100)],
+      ],
+      descripcion: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -56,31 +62,41 @@ export class HabilidadComponent implements OnInit {
 
   agregarHabilidad(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .crearHabilidad(this.formAgregarHabilidad.value)
-      .subscribe(() => {
-        this.obtenerHabilidad();
-        this.cerrarFormularioCrearHabilidad();
-      });
+    if (!this.formAgregarHabilidad.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .crearHabilidad(this.formAgregarHabilidad.value)
+        .subscribe(() => {
+          this.obtenerHabilidad();
+          this.cerrarFormularioCrearHabilidad();
+        });
+    }
   }
 
   modificarHabilidad(event: Event): void {
     event.preventDefault;
-    this.portfolioService
-      .modificarHabilidad(
-        this.modificandoHabilidadId,
-        this.formModificarHabilidad.value
-      )
-      .subscribe(() => {
-        this.obtenerHabilidad();
-        this.cerrarFormularioModificacionHabilidad();
-      });
+    if (!this.formModificarHabilidad.valid) {
+      alert('El formulario no es valido');
+    } else {
+      this.portfolioService
+        .modificarHabilidad(
+          this.modificandoHabilidadId,
+          this.formModificarHabilidad.value
+        )
+        .subscribe(() => {
+          this.obtenerHabilidad();
+          this.cerrarFormularioModificacionHabilidad();
+        });
+    }
   }
 
   borrarHabilidad(id: number): void {
-    this.portfolioService.borrarHabilidad(id).subscribe(() => {
-      this.obtenerHabilidad();
-    });
+    if (confirm('Esta seguro que desea borrar esta entrada?')) {
+      this.portfolioService.borrarHabilidad(id).subscribe(() => {
+        this.obtenerHabilidad();
+      });
+    }
   }
 
   obtenerHabilidad(): void {
@@ -111,5 +127,13 @@ export class HabilidadComponent implements OnInit {
       transparent 75% 100%\
     ),\
     conic-gradient(var(--chartreuse) ${habilidad?.porcentaje}%, #474747 0)`;
+  }
+
+  valorAgregarHabilidad(campo: String) {
+    return this.formAgregarHabilidad.get(`${campo}`);
+  }
+
+  valorModificarHabilidad(campo: String) {
+    return this.formModificarHabilidad.get(`${campo}`);
   }
 }

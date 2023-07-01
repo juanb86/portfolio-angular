@@ -105,10 +105,36 @@
               <input
                 type="text"
                 formControlName="nombre"
-                value="exp"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('nombre')?.errors &&
+                    valorModificarPersona('nombre')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('nombre')?.errors &&
+                    valorModificarPersona('nombre')?.touched
+                }"
                 class="form-control"
                 id="inputNombre"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('nombre')?.errors &&
+                  valorModificarPersona('nombre')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarPersona('nombre')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo nombre es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarPersona('nombre')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El campo nombre debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputApellido" class="form-label login-label"
@@ -117,9 +143,40 @@
               <input
                 type="text"
                 formControlName="apellido"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('apellido')?.errors &&
+                    valorModificarPersona('apellido')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('apellido')?.errors &&
+                    valorModificarPersona('apellido')?.touched
+                }"
                 class="form-control"
                 id="inputApellido"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('apellido')?.errors &&
+                  valorModificarPersona('apellido')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarPersona('apellido')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo apellido es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarPersona('apellido')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo apellido debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputTitulo" class="form-label login-label"
@@ -128,9 +185,36 @@
               <input
                 type="text"
                 formControlName="titulo"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('titulo')?.errors &&
+                    valorModificarPersona('titulo')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('titulo')?.errors &&
+                    valorModificarPersona('titulo')?.touched
+                }"
                 class="form-control"
                 id="inputTitulo"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('titulo')?.errors &&
+                  valorModificarPersona('titulo')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarPersona('titulo')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo titulo es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarPersona('titulo')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El campo titulo debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputAcercaDe" class="form-label login-label"
@@ -139,9 +223,36 @@
               <input
                 type="text"
                 formControlName="info"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('info')?.errors &&
+                    valorModificarPersona('info')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('info')?.errors &&
+                    valorModificarPersona('info')?.touched
+                }"
                 class="form-control"
                 id="inputAcercaDe"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('info')?.errors &&
+                  valorModificarPersona('info')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarPersona('info')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo info es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarPersona('info')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El campo info debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputLinkGithub" class="form-label login-label"
@@ -150,9 +261,36 @@
               <input
                 type="text"
                 formControlName="github"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('github')?.errors &&
+                    valorModificarPersona('github')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('github')?.errors &&
+                    valorModificarPersona('github')?.touched
+                }"
                 class="form-control"
                 id="inputLinkGithub"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('github')?.errors &&
+                  valorModificarPersona('github')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarPersona('github')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo github es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarPersona('github')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El campo github debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputLinkLinkedin" class="form-label login-label"
@@ -161,9 +299,40 @@
               <input
                 type="text"
                 formControlName="linkedin"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('linkedin')?.errors &&
+                    valorModificarPersona('linkedin')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('linkedin')?.errors &&
+                    valorModificarPersona('linkedin')?.touched
+                }"
                 class="form-control"
                 id="inputLinkLinkedin"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('linkedin')?.errors &&
+                  valorModificarPersona('linkedin')?.touched
+                "
+              >
+                <p
+                  *ngIf="
+                    valorModificarPersona('linkedin')?.hasError('required')
+                  "
+                  class="text-danger"
+                >
+                  El campo linkedin es requerido.
+                </p>
+                <p
+                  *ngIf="
+                    valorModificarPersona('linkedin')?.hasError('minlength')
+                  "
+                  class="text-danger"
+                >
+                  El campo linkedin debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
             <div class="mb-3">
               <label for="inputLinkFoto" class="form-label login-label"
@@ -172,11 +341,44 @@
               <input
                 type="text"
                 formControlName="foto"
+                [ngClass]="{
+                  'is-invalid':
+                    valorModificarPersona('foto')?.errors &&
+                    valorModificarPersona('foto')?.touched,
+                  'is-valid':
+                    !valorModificarPersona('foto')?.errors &&
+                    valorModificarPersona('foto')?.touched
+                }"
                 class="form-control"
                 id="inputLinkFoto"
               />
+              <div
+                *ngIf="
+                  valorModificarPersona('foto')?.errors &&
+                  valorModificarPersona('foto')?.touched
+                "
+              >
+                <p
+                  *ngIf="valorModificarPersona('foto')?.hasError('required')"
+                  class="text-danger"
+                >
+                  El campo foto es requerido.
+                </p>
+                <p
+                  *ngIf="valorModificarPersona('foto')?.hasError('minlength')"
+                  class="text-danger"
+                >
+                  El campo foto debe tener 3 o mas caracteres.
+                </p>
+              </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-solid">
+            <button
+              [ngClass]="{
+                disabled: !formModificarPersona.valid
+              }"
+              type="submit"
+              class="btn btn-primary btn-solid"
+            >
               Enviar
             </button>
             <button

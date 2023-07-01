@@ -94,9 +94,42 @@
                 <input
                   type="text"
                   formControlName="cliente"
+                  [ngClass]="{
+                    'is-invalid':
+                      valorModificarExperiencia('cliente')?.errors &&
+                      valorModificarExperiencia('cliente')?.touched,
+                    'is-valid':
+                      !valorModificarExperiencia('cliente')?.errors &&
+                      valorModificarExperiencia('cliente')?.touched
+                  }"
                   class="form-control"
                   id="inputCliente"
                 />
+                <div
+                  *ngIf="
+                    valorModificarExperiencia('cliente')?.errors &&
+                    valorModificarExperiencia('cliente')?.touched
+                  "
+                >
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('cliente')?.hasError('required')
+                    "
+                    class="text-danger"
+                  >
+                    El campo cliente es requerido.
+                  </p>
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('cliente')?.hasError(
+                        'minlength'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo cliente debe tener 3 o mas caracteres.
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="inputOcupacion" class="form-label login-label"
@@ -105,9 +138,44 @@
                 <input
                   type="text"
                   formControlName="ocupacion"
+                  [ngClass]="{
+                    'is-invalid':
+                      valorModificarExperiencia('ocupacion')?.errors &&
+                      valorModificarExperiencia('ocupacion')?.touched,
+                    'is-valid':
+                      !valorModificarExperiencia('ocupacion')?.errors &&
+                      valorModificarExperiencia('ocupacion')?.touched
+                  }"
                   class="form-control"
                   id="inputOcupacion"
                 />
+                <div
+                  *ngIf="
+                    valorModificarExperiencia('ocupacion')?.errors &&
+                    valorModificarExperiencia('ocupacion')?.touched
+                  "
+                >
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('ocupacion')?.hasError(
+                        'required'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo ocupacion es requerido.
+                  </p>
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('ocupacion')?.hasError(
+                        'minlength'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo ocupacion debe tener 3 o mas caracteres.
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="inputTecnologias" class="form-label login-label"
@@ -116,9 +184,44 @@
                 <input
                   type="text"
                   formControlName="tecnologias"
+                  [ngClass]="{
+                    'is-invalid':
+                      valorModificarExperiencia('tecnologias')?.errors &&
+                      valorModificarExperiencia('tecnologias')?.touched,
+                    'is-valid':
+                      !valorModificarExperiencia('tecnologias')?.errors &&
+                      valorModificarExperiencia('tecnologias')?.touched
+                  }"
                   class="form-control"
                   id="inputTecnologias"
                 />
+                <div
+                  *ngIf="
+                    valorModificarExperiencia('tecnologias')?.errors &&
+                    valorModificarExperiencia('tecnologias')?.touched
+                  "
+                >
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('tecnologias')?.hasError(
+                        'required'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo tecnologias es requerido.
+                  </p>
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('tecnologias')?.hasError(
+                        'minlength'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo tecnologias debe tener 3 o mas caracteres.
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="inputFechaInicio" class="form-label login-label"
@@ -127,9 +230,34 @@
                 <input
                   type="date"
                   formControlName="fechaInicio"
+                  [ngClass]="{
+                    'is-invalid':
+                      valorModificarExperiencia('fechaInicio')?.errors &&
+                      valorModificarExperiencia('fechaInicio')?.touched,
+                    'is-valid':
+                      !valorModificarExperiencia('fechaInicio')?.errors &&
+                      valorModificarExperiencia('fechaInicio')?.touched
+                  }"
                   class="form-control"
                   id="inputFechaInicio"
                 />
+                <div
+                  *ngIf="
+                    valorModificarExperiencia('fechaInicio')?.errors &&
+                    valorModificarExperiencia('fechaInicio')?.touched
+                  "
+                >
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('fechaInicio')?.hasError(
+                        'required'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo fecha inicio es requerido.
+                  </p>
+                </div>
               </div>
               <div class="mb-3">
                 <label for="inputFechaFin" class="form-label login-label"
@@ -149,11 +277,52 @@
                 <input
                   type="text"
                   formControlName="descripcion"
+                  [ngClass]="{
+                    'is-invalid':
+                      valorModificarExperiencia('descripcion')?.errors &&
+                      valorModificarExperiencia('descripcion')?.touched,
+                    'is-valid':
+                      !valorModificarExperiencia('descripcion')?.errors &&
+                      valorModificarExperiencia('descripcion')?.touched
+                  }"
                   class="form-control"
                   id="inputDescripcion"
                 />
+                <div
+                  *ngIf="
+                    valorModificarExperiencia('descripcion')?.errors &&
+                    valorModificarExperiencia('descripcion')?.touched
+                  "
+                >
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('descripcion')?.hasError(
+                        'required'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo descripcion es requerido.
+                  </p>
+                  <p
+                    *ngIf="
+                      valorModificarExperiencia('descripcion')?.hasError(
+                        'minlength'
+                      )
+                    "
+                    class="text-danger"
+                  >
+                    El campo descripcion debe tener 3 o mas caracteres.
+                  </p>
+                </div>
               </div>
-              <button type="submit" class="btn btn-primary btn-solid">
+              <button
+                [ngClass]="{
+                  disabled: !formModificarExperiencia.valid
+                }"
+                type="submit"
+                class="btn btn-primary btn-solid"
+              >
                 Enviar
               </button>
               <button
@@ -196,9 +365,38 @@
             <input
               type="text"
               formControlName="cliente"
+              [ngClass]="{
+                'is-invalid':
+                  valorAgregarExperiencia('cliente')?.errors &&
+                  valorAgregarExperiencia('cliente')?.touched,
+                'is-valid':
+                  !valorAgregarExperiencia('cliente')?.errors &&
+                  valorAgregarExperiencia('cliente')?.touched
+              }"
               class="form-control"
               id="inputCliente"
             />
+            <div
+              *ngIf="
+                valorAgregarExperiencia('cliente')?.errors &&
+                valorAgregarExperiencia('cliente')?.touched
+              "
+            >
+              <p
+                *ngIf="valorAgregarExperiencia('cliente')?.hasError('required')"
+                class="text-danger"
+              >
+                El campo cliente es requerido.
+              </p>
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('cliente')?.hasError('minlength')
+                "
+                class="text-danger"
+              >
+                El campo cliente debe tener 3 o mas caracteres.
+              </p>
+            </div>
           </div>
           <div class="mb-3">
             <label for="inputOcupacion" class="form-label login-label"
@@ -207,9 +405,40 @@
             <input
               type="text"
               formControlName="ocupacion"
+              [ngClass]="{
+                'is-invalid':
+                  valorAgregarExperiencia('ocupacion')?.errors &&
+                  valorAgregarExperiencia('ocupacion')?.touched,
+                'is-valid':
+                  !valorAgregarExperiencia('ocupacion')?.errors &&
+                  valorAgregarExperiencia('ocupacion')?.touched
+              }"
               class="form-control"
               id="inputOcupacion"
             />
+            <div
+              *ngIf="
+                valorAgregarExperiencia('ocupacion')?.errors &&
+                valorAgregarExperiencia('ocupacion')?.touched
+              "
+            >
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('ocupacion')?.hasError('required')
+                "
+                class="text-danger"
+              >
+                El campo ocupacion es requerido.
+              </p>
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('ocupacion')?.hasError('minlength')
+                "
+                class="text-danger"
+              >
+                El campo ocupacion debe tener 3 o mas caracteres.
+              </p>
+            </div>
           </div>
           <div class="mb-3">
             <label for="inputTecnologias" class="form-label login-label"
@@ -218,9 +447,40 @@
             <input
               type="text"
               formControlName="tecnologias"
+              [ngClass]="{
+                'is-invalid':
+                  valorAgregarExperiencia('tecnologias')?.errors &&
+                  valorAgregarExperiencia('tecnologias')?.touched,
+                'is-valid':
+                  !valorAgregarExperiencia('tecnologias')?.errors &&
+                  valorAgregarExperiencia('tecnologias')?.touched
+              }"
               class="form-control"
               id="inputTecnologias"
             />
+            <div
+              *ngIf="
+                valorAgregarExperiencia('tecnologias')?.errors &&
+                valorAgregarExperiencia('tecnologias')?.touched
+              "
+            >
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('tecnologias')?.hasError('required')
+                "
+                class="text-danger"
+              >
+                El campo tecnologias es requerido.
+              </p>
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('tecnologias')?.hasError('minlength')
+                "
+                class="text-danger"
+              >
+                El campo tecnologias debe tener 3 o mas caracteres.
+              </p>
+            </div>
           </div>
           <div class="mb-3">
             <label for="inputFechaInicio" class="form-label login-label"
@@ -229,9 +489,32 @@
             <input
               type="date"
               formControlName="fechaInicio"
+              [ngClass]="{
+                'is-invalid':
+                  valorAgregarExperiencia('fechaInicio')?.errors &&
+                  valorAgregarExperiencia('fechaInicio')?.touched,
+                'is-valid':
+                  !valorAgregarExperiencia('fechaInicio')?.errors &&
+                  valorAgregarExperiencia('fechaInicio')?.touched
+              }"
               class="form-control"
               id="inputFechaInicio"
             />
+            <div
+              *ngIf="
+                valorAgregarExperiencia('fechaInicio')?.errors &&
+                valorAgregarExperiencia('fechaInicio')?.touched
+              "
+            >
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('fechaInicio')?.hasError('required')
+                "
+                class="text-danger"
+              >
+                El campo fecha inicio es requerido.
+              </p>
+            </div>
           </div>
           <div class="mb-3">
             <label for="inputFechaFin" class="form-label login-label"
@@ -251,11 +534,48 @@
             <input
               type="text"
               formControlName="descripcion"
+              [ngClass]="{
+                'is-invalid':
+                  valorAgregarExperiencia('descripcion')?.errors &&
+                  valorAgregarExperiencia('descripcion')?.touched,
+                'is-valid':
+                  !valorAgregarExperiencia('descripcion')?.errors &&
+                  valorAgregarExperiencia('descripcion')?.touched
+              }"
               class="form-control"
               id="inputDescripcion"
             />
+            <div
+              *ngIf="
+                valorAgregarExperiencia('descripcion')?.errors &&
+                valorAgregarExperiencia('descripcion')?.touched
+              "
+            >
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('descripcion')?.hasError('required')
+                "
+                class="text-danger"
+              >
+                El campo descripcion es requerido.
+              </p>
+              <p
+                *ngIf="
+                  valorAgregarExperiencia('descripcion')?.hasError('minlength')
+                "
+                class="text-danger"
+              >
+                El campo descripcion debe tener 3 o mas caracteres.
+              </p>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-solid">
+          <button
+            [ngClass]="{
+              disabled: !formAgregarExperiencia.valid
+            }"
+            type="submit"
+            class="btn btn-primary btn-solid"
+          >
             Enviar
           </button>
           <button
